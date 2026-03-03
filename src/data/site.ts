@@ -19,5 +19,5 @@ export const navigation = [
 export const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/realmfikri' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhamad-f-10166a132/' },
-  { label: 'X', href: 'https://x.com/Himposing' }
+  { label: 'X', href: 'https://x.com/realmfikri' }
 ];
