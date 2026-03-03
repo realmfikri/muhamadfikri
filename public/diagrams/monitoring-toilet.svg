@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="monitoring-toilet architecture placeholder diagram">
+  <rect width="960" height="520" fill="#f8fafc" />
+  <rect x="70" y="180" width="220" height="150" rx="14" fill="#e2e8f0" stroke="#0f172a" />
+  <text x="180" y="235" text-anchor="middle" font-family="monospace" font-size="17" fill="#0f172a">Firmware Nodes</text>
+  <text x="180" y="265" text-anchor="middle" font-family="monospace" font-size="14" fill="#334155">water/soap/tissue</text>
+  <text x="180" y="290" text-anchor="middle" font-family="monospace" font-size="14" fill="#334155">ammonia sensors</text>
+  <rect x="340" y="110" width="260" height="130" rx="14" fill="#cffafe" stroke="#155e75" />
+  <text x="470" y="180" text-anchor="middle" font-family="monospace" font-size="18" fill="#164e63">Telemetry API</text>
+  <rect x="340" y="290" width="260" height="130" rx="14" fill="#dcfce7" stroke="#166534" />
+  <text x="470" y="360" text-anchor="middle" font-family="monospace" font-size="18" fill="#14532d">Dashboard UI</text>
+  <rect x="680" y="110" width="200" height="130" rx="14" fill="#fef3c7" stroke="#92400e" />
+  <text x="780" y="180" text-anchor="middle" font-family="monospace" font-size="16" fill="#78350f">PostgreSQL</text>
+  <rect x="680" y="290" width="200" height="130" rx="14" fill="#fee2e2" stroke="#991b1b" />
+  <text x="780" y="360" text-anchor="middle" font-family="monospace" font-size="16" fill="#991b1b">Alerts + Ops</text>
+  <line x1="290" y1="255" x2="340" y2="175" stroke="#0f172a" stroke-width="3" />
+  <line x1="600" y1="175" x2="680" y2="175" stroke="#0f172a" stroke-width="3" />
+  <line x1="600" y1="355" x2="680" y2="355" stroke="#0f172a" stroke-width="3" />
+  <line x1="290" y1="255" x2="340" y2="355" stroke="#0f172a" stroke-width="3" />
+</svg>

@@ -1,0 +1,30 @@
+---
+import { socialLinks, siteConfig } from '../data/site';
+---
+
+<footer class="mt-20 border-t border-slate-200/70 py-10 dark:border-slate-800">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 lg:px-8">
+    <p class="text-sm text-slate-600 dark:text-slate-300">
+      Built with Astro + Tailwind. Focused on backend, systems, security, and IoT work.
+    </p>
+    <div class="flex flex-wrap items-center gap-4 text-sm">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="font-medium text-cyan-700 underline underline-offset-4 hover:text-cyan-600 dark:text-cyan-300"
+      >
+        {siteConfig.email}
+      </a>
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          class="text-slate-700 underline underline-offset-4 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <p class="text-xs text-slate-500 dark:text-slate-400">© {new Date().getFullYear()} Muhamad Fikri</p>
+  </div>
+</footer>

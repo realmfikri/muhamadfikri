@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: rgb(14 116 144 / 0.25);
+  color: inherit;
+}
+
+.site-bg {
+  background-color: rgb(248 250 252);
+  background-image:
+    radial-gradient(circle at 18% 20%, rgb(148 163 184 / 0.18), transparent 34%),
+    radial-gradient(circle at 85% 0%, rgb(56 189 248 / 0.24), transparent 33%),
+    linear-gradient(to bottom, rgb(255 255 255), rgb(241 245 249));
+}
+
+.dark .site-bg {
+  background-color: rgb(2 6 23);
+  background-image:
+    radial-gradient(circle at 18% 20%, rgb(56 189 248 / 0.2), transparent 34%),
+    radial-gradient(circle at 85% 0%, rgb(14 116 144 / 0.28), transparent 33%),
+    linear-gradient(to bottom, rgb(2 6 23), rgb(15 23 42));
+}
+
+.grid-overlay {
+  background-image: linear-gradient(rgb(100 116 139 / 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgb(100 116 139 / 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.card {
+  @apply rounded-2xl border border-slate-200/70 bg-white/80 shadow-sm backdrop-blur-sm dark:border-slate-700/70 dark:bg-slate-900/70;
+}
+
+.button-primary {
+  @apply inline-flex items-center justify-center rounded-lg bg-cyan-700 px-5 py-3 font-semibold text-white transition hover:bg-cyan-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500;
+}
+
+.button-secondary {
+  @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white/80 px-5 py-3 font-semibold text-slate-900 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800;
+}
+
+.prose-content {
+  @apply max-w-none text-base leading-8 text-slate-700 dark:text-slate-300;
+}
+
+.prose-content h2 {
+  @apply mt-10 text-2xl font-bold text-slate-900 dark:text-white;
+}
+
+.prose-content h3 {
+  @apply mt-8 text-xl font-semibold text-slate-900 dark:text-white;
+}
+
+.prose-content p {
+  @apply mt-4;
+}
+
+.prose-content ul {
+  @apply mt-4 list-disc space-y-2 pl-6;
+}
+
+.prose-content li {
+  @apply marker:text-cyan-600;
+}
+
+.prose-content a {
+  @apply font-medium text-cyan-700 underline underline-offset-4 hover:text-cyan-600 dark:text-cyan-300 dark:hover:text-cyan-200;
+}
+
+.prose-content code {
+  @apply rounded bg-slate-100 px-1.5 py-1 text-sm dark:bg-slate-800;
+}
+
+.prose-content pre {
+  @apply mt-5 overflow-x-auto rounded-xl border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 dark:border-slate-700;
+}
+
+.prose-content blockquote {
+  @apply mt-6 border-l-4 border-cyan-500 pl-4 italic text-slate-700 dark:text-slate-300;
+}

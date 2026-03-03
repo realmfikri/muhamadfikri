@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const skillAreas = [
+  {
+    label: 'Backend',
+    items: ['TypeScript/Node.js services', 'Go-focused systems concepts', 'Data modeling and API contracts']
+  },
+  {
+    label: 'Systems & DevOps',
+    items: ['Linux operations', 'Nginx reverse proxy', 'VPS deployment workflows', 'Runbooks and health checks']
+  },
+  {
+    label: 'Security',
+    items: ['eMRTD/BAC flows', 'Secure messaging concepts', 'Protocol-aware testing and verification']
+  },
+  {
+    label: 'IoT & Product',
+    items: ['Sensor data ingestion', 'Dashboard integration', 'Operator-first UX and rollout planning']
+  }
+];
+
+const selectedAchievements = [
+  'Built a Java-based ePassport emulator covering ICAO 9303 core data-group personalization and host-side verification tooling.',
+  'Designed a full-text search engine architecture using BM25 + inverted indexes with library and HTTP service interfaces.',
+  'Shipped and documented end-to-end IoT monitoring infrastructure including backend services, dashboards, and operational runbooks.',
+  'Defined a POS/inventory system approach for a real retail context with photo-first inventory and stock-ledger discipline.'
+];
+---
+
+<BaseLayout
+  path="/resume"
+  title="Resume"
+  description="Resume summary for Muhamad Fikri, including key skills and selected project achievements."
+>
+  <section class="card p-8 sm:p-10">
+    <SectionHeading
+      eyebrow="Resume"
+      title="Profile Summary"
+      description="Backend and systems-focused engineer with practical experience across security, IoT, and product delivery."
+    />
+
+    <p class="max-w-4xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+      I work across backend engineering, infrastructure, and security-heavy projects with a focus on clear architecture,
+      maintainable implementation, and operational readiness. My work often combines software design with systems concerns,
+      including deployment reliability, protocol correctness, and measurable quality practices.
+    </p>
+
+    <div class="mt-8">
+      <a href="/Muhamad_Fikri_CV.pdf" class="button-primary text-base">Download CV (PDF)</a>
+    </div>
+  </section>
+
+  <section class="mt-14 grid gap-6 lg:grid-cols-2">
+    <article class="card p-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Key Skills</h2>
+      <div class="mt-4 space-y-4">
+        {skillAreas.map((area) => (
+          <section>
+            <h3 class="font-semibold text-slate-900 dark:text-white">{area.label}</h3>
+            <ul class="mt-2 list-disc space-y-1.5 pl-5 text-slate-700 dark:text-slate-300">
+              {area.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </article>
+
+    <article class="card p-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Selected Achievements</h2>
+      <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
+        {selectedAchievements.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </article>
+  </section>
+</BaseLayout>

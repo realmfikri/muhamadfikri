@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="AsterSearch architecture placeholder diagram">
+  <rect width="960" height="520" fill="#f8fafc" />
+  <rect x="80" y="190" width="210" height="130" rx="14" fill="#e2e8f0" stroke="#0f172a" />
+  <text x="185" y="255" text-anchor="middle" font-family="monospace" font-size="18" fill="#0f172a">Clients</text>
+  <rect x="340" y="90" width="260" height="130" rx="14" fill="#cffafe" stroke="#155e75" />
+  <text x="470" y="160" text-anchor="middle" font-family="monospace" font-size="18" fill="#164e63">Indexing API</text>
+  <rect x="340" y="290" width="260" height="130" rx="14" fill="#dcfce7" stroke="#166534" />
+  <text x="470" y="360" text-anchor="middle" font-family="monospace" font-size="18" fill="#14532d">Search API</text>
+  <rect x="670" y="110" width="210" height="120" rx="14" fill="#fef3c7" stroke="#92400e" />
+  <text x="775" y="175" text-anchor="middle" font-family="monospace" font-size="16" fill="#78350f">Segments</text>
+  <rect x="670" y="280" width="210" height="120" rx="14" fill="#fce7f3" stroke="#9d174d" />
+  <text x="775" y="345" text-anchor="middle" font-family="monospace" font-size="16" fill="#831843">BM25 Ranking</text>
+  <line x1="290" y1="255" x2="340" y2="155" stroke="#0f172a" stroke-width="3" />
+  <line x1="290" y1="255" x2="340" y2="355" stroke="#0f172a" stroke-width="3" />
+  <line x1="600" y1="155" x2="670" y2="170" stroke="#0f172a" stroke-width="3" />
+  <line x1="600" y1="355" x2="670" y2="340" stroke="#0f172a" stroke-width="3" />
+</svg>

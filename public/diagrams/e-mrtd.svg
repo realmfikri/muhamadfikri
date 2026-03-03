@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="e-mrtd architecture placeholder diagram">
+  <rect width="960" height="520" fill="#f8fafc" />
+  <rect x="80" y="170" width="250" height="160" rx="14" fill="#e2e8f0" stroke="#0f172a" />
+  <text x="205" y="225" text-anchor="middle" font-family="monospace" font-size="20" fill="#0f172a">Java Card Applet</text>
+  <text x="205" y="255" text-anchor="middle" font-family="monospace" font-size="15" fill="#334155">BAC / SM / LDS</text>
+  <rect x="360" y="120" width="260" height="110" rx="14" fill="#cffafe" stroke="#155e75" />
+  <text x="490" y="180" text-anchor="middle" font-family="monospace" font-size="18" fill="#164e63">Personalization CLI</text>
+  <rect x="360" y="280" width="260" height="110" rx="14" fill="#dcfce7" stroke="#166534" />
+  <text x="490" y="340" text-anchor="middle" font-family="monospace" font-size="18" fill="#14532d">Verification / Reader</text>
+  <rect x="670" y="170" width="210" height="160" rx="14" fill="#fef3c7" stroke="#92400e" />
+  <text x="775" y="225" text-anchor="middle" font-family="monospace" font-size="18" fill="#78350f">Artifacts</text>
+  <text x="775" y="255" text-anchor="middle" font-family="monospace" font-size="15" fill="#78350f">DG files + SOD</text>
+  <line x1="330" y1="250" x2="360" y2="175" stroke="#0f172a" stroke-width="3" />
+  <line x1="330" y1="250" x2="360" y2="335" stroke="#0f172a" stroke-width="3" />
+  <line x1="620" y1="175" x2="670" y2="250" stroke="#0f172a" stroke-width="3" />
+  <line x1="620" y1="335" x2="670" y2="250" stroke="#0f172a" stroke-width="3" />
+</svg>

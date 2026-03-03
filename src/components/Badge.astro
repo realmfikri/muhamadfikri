@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  tone?: 'neutral' | 'accent';
+}
+
+const { label, tone = 'neutral' } = Astro.props;
+const className =
+  tone === 'accent'
+    ? 'border-cyan-300 bg-cyan-100/80 text-cyan-800 dark:border-cyan-600 dark:bg-cyan-900/40 dark:text-cyan-200'
+    : 'border-slate-300 bg-slate-100/80 text-slate-700 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-200';
+---
+
+<span class={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium ${className}`}>
+  {label}
+</span>

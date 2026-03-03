@@ -1,0 +1,122 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  path = '/',
+  image = '/og.png',
+  type = 'website',
+  jsonLd
+} = Astro.props;
+
+const canonicalUrl = new URL(path, Astro.site).toString();
+const socialImage = image.startsWith('http') ? image : new URL(image, Astro.site).toString();
+const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const pageTitle = title.includes('Muhamad Fikri') ? title : `${title} | Muhamad Fikri`;
+---
+
+<!doctype html>
+<html lang="en" class="h-full antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content="muhamadfikri.com" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+
+    {jsonLdItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+  </head>
+  <body class="site-bg grid-overlay min-h-full text-slate-900 dark:text-slate-100">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900"
+    >
+      Skip to main content
+    </a>
+
+    <div class="pointer-events-none fixed inset-0 -z-10 opacity-60 dark:opacity-30" aria-hidden="true">
+      <div class="absolute -left-16 top-12 h-52 w-52 rounded-full bg-cyan-400/40 blur-3xl"></div>
+      <div class="absolute right-0 top-1/4 h-72 w-72 rounded-full bg-sky-300/35 blur-3xl dark:bg-cyan-600/25"></div>
+    </div>
+
+    <Navbar currentPath={Astro.url.pathname} />
+
+    <main id="main-content" class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      (() => {
+        const getCurrentTheme = () =>
+          document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+        const syncThemeIcons = () => {
+          const theme = getCurrentTheme();
+          document.querySelectorAll('[data-theme-icon-light]').forEach((node) => {
+            node.classList.toggle('hidden', theme === 'dark');
+          });
+          document.querySelectorAll('[data-theme-icon-dark]').forEach((node) => {
+            node.classList.toggle('hidden', theme === 'light');
+          });
+        };
+
+        const setTheme = (theme) => {
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          localStorage.setItem('theme', theme);
+          syncThemeIcons();
+        };
+
+        document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const nextTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+            setTheme(nextTheme);
+          });
+        });
+
+        syncThemeIcons();
+      })();
+    </script>
+  </body>
+</html>

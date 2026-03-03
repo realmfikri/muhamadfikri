@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Badge from '../components/Badge.astro';
+import { siteConfig } from '../data/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 5);
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Muhamad Fikri',
+  url: siteConfig.siteUrl,
+  image: `${siteConfig.siteUrl}/og.png`,
+  email: `mailto:${siteConfig.email}`,
+  alumniOf: 'Bandung Institute of Technology (ITB)',
+  knowsAbout: ['Backend Systems', 'DevOps', 'IoT', 'Security', 'Product Engineering'],
+  sameAs: [
+    'https://github.com/realmfikri',
+    'https://www.linkedin.com/in/muhamad-f-10166a132/',
+    'https://x.com/Himposing'
+  ]
+};
+
+const skillGroups = [
+  {
+    area: 'Backend',
+    items: ['API design', 'Data modeling', 'Event-driven workflows', 'Integration testing']
+  },
+  {
+    area: 'Systems/DevOps',
+    items: ['Linux operations', 'Nginx reverse proxy', 'VPS deployments', 'Observability basics']
+  },
+  {
+    area: 'Security',
+    items: ['BAC/secure messaging concepts', 'Authentication flows', 'Operational hardening']
+  },
+  {
+    area: 'IoT',
+    items: ['Sensor data ingestion', 'Firmware/backend integration', 'Dashboard monitoring']
+  },
+  {
+    area: 'Product',
+    items: ['MVP scoping', 'Operator-first UX', 'Requirement-to-implementation handoff']
+  }
+];
+
+const infraNotes = [
+  'Reuse older laptops as low-power Linux boxes for experiment environments and backups.',
+  'Manage servers over SSH, including service checks, logs, and deployment troubleshooting.',
+  'Run reverse proxy setups with Nginx for API/app subdomains and TLS termination.',
+  'Use tunnels and remote access tools to safely expose internal services when needed.',
+  'Document runbooks and recovery steps so ops tasks stay repeatable.'
+];
+---
+
+<BaseLayout
+  path="/"
+  title={siteConfig.title}
+  description={siteConfig.description}
+  jsonLd={personJsonLd}
+>
+  <section class="card overflow-hidden p-8 sm:p-10">
+    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-cyan-700 dark:text-cyan-300">Portfolio</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+      Muhamad Fikri — Electrical Engineering (ITB) | Backend / Systems / IoT / Security
+    </h1>
+    <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+      Systems-minded engineer who enjoys backend architecture, infrastructure, security-focused engineering, and IoT
+      products. Long-term, I want to build in energy and data-center adjacent domains where software and physical
+      systems meet.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/projects" class="button-primary">View Projects</a>
+      <a href="/Muhamad_Fikri_CV.pdf" class="button-secondary">Download CV</a>
+      <a href="/contact" class="button-secondary">Contact</a>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <SectionHeading
+      eyebrow="Selected Work"
+      title="Featured Projects"
+      description="Focused case studies covering backend systems, security, IoT operations, and product engineering."
+    />
+
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <SectionHeading
+      eyebrow="Capabilities"
+      title="Skills Snapshot"
+      description="Core areas I actively use in projects, from protocol-level security to deployment workflows."
+    />
+
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {skillGroups.map((group) => (
+        <article class="card p-5">
+          <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{group.area}</h3>
+          <ul class="mt-3 list-disc space-y-1.5 pl-5 text-slate-700 dark:text-slate-300">
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-16 grid gap-6 lg:grid-cols-[2fr_1fr]">
+    <article class="card p-6">
+      <SectionHeading
+        eyebrow="Infra"
+        title="Infra & Homelab"
+        description="Hands-on operations practice from personal environments that later informs production decisions."
+      />
+      <ul class="list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
+        {infraNotes.map((note) => (
+          <li>{note}</li>
+        ))}
+      </ul>
+    </article>
+
+    <aside class="card p-6">
+      <SectionHeading
+        eyebrow="Now"
+        title="What I’m Working On"
+        description="Current focus areas."
+      />
+      <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+        <li><Badge label="Backend Reliability" tone="accent" /> improving deploy and runbook quality.</li>
+        <li><Badge label="Security" tone="accent" /> deeper smartcard/eMRTD protocol implementation work.</li>
+        <li><Badge label="IoT" tone="accent" /> refining telemetry and alerting pipelines.</li>
+      </ul>
+    </aside>
+  </section>
+</BaseLayout>

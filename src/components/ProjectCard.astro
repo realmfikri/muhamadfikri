@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Badge from './Badge.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const projectUrl = `/projects/${project.slug}`;
+---
+
+<article class="card h-full p-6 transition hover:-translate-y-0.5 hover:shadow-lg">
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">
+      <a href={projectUrl} class="outline-none focus-visible:underline">{project.data.title}</a>
+    </h3>
+    <Badge label={project.data.status} tone="accent" />
+  </div>
+  <p class="mt-3 text-slate-700 dark:text-slate-300">{project.data.tagline}</p>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    {project.data.tags.map((tag) => (
+      <Badge label={tag} />
+    ))}
+  </div>
+
+  <div class="mt-5">
+    <p class="text-sm font-semibold uppercase tracking-[0.1em] text-slate-600 dark:text-slate-300">What I did</p>
+    <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700 dark:text-slate-300">
+      {project.data.highlights.slice(0, 2).map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+    <a href={projectUrl} class="text-cyan-700 underline underline-offset-4 hover:text-cyan-600 dark:text-cyan-300">
+      Read case study
+    </a>
+    {project.data.links.map((link) => (
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noreferrer"
+        class="text-slate-700 underline underline-offset-4 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</article>
