@@ -1,19 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="monitoring-toilet architecture placeholder diagram">
-  <rect width="960" height="520" fill="#f8fafc" />
-  <rect x="70" y="180" width="220" height="150" rx="14" fill="#e2e8f0" stroke="#0f172a" />
-  <text x="180" y="235" text-anchor="middle" font-family="monospace" font-size="17" fill="#0f172a">Firmware Nodes</text>
-  <text x="180" y="265" text-anchor="middle" font-family="monospace" font-size="14" fill="#334155">water/soap/tissue</text>
-  <text x="180" y="290" text-anchor="middle" font-family="monospace" font-size="14" fill="#334155">ammonia sensors</text>
-  <rect x="340" y="110" width="260" height="130" rx="14" fill="#cffafe" stroke="#155e75" />
-  <text x="470" y="180" text-anchor="middle" font-family="monospace" font-size="18" fill="#164e63">Telemetry API</text>
-  <rect x="340" y="290" width="260" height="130" rx="14" fill="#dcfce7" stroke="#166534" />
-  <text x="470" y="360" text-anchor="middle" font-family="monospace" font-size="18" fill="#14532d">Dashboard UI</text>
-  <rect x="680" y="110" width="200" height="130" rx="14" fill="#fef3c7" stroke="#92400e" />
-  <text x="780" y="180" text-anchor="middle" font-family="monospace" font-size="16" fill="#78350f">PostgreSQL</text>
-  <rect x="680" y="290" width="200" height="130" rx="14" fill="#fee2e2" stroke="#991b1b" />
-  <text x="780" y="360" text-anchor="middle" font-family="monospace" font-size="16" fill="#991b1b">Alerts + Ops</text>
-  <line x1="290" y1="255" x2="340" y2="175" stroke="#0f172a" stroke-width="3" />
-  <line x1="600" y1="175" x2="680" y2="175" stroke="#0f172a" stroke-width="3" />
-  <line x1="600" y1="355" x2="680" y2="355" stroke="#0f172a" stroke-width="3" />
-  <line x1="290" y1="255" x2="340" y2="355" stroke="#0f172a" stroke-width="3" />
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="Monitoring toilet backend architecture">
+  <title>Monitoring toilet backend architecture</title>
+  <desc>ESP32 restroom nodes send telemetry through an Nginx reverse proxy into a Node.js and Express server. The server authenticates, validates, normalizes, and debounces data before writing snapshot and history records, pushing WebSocket updates to the dashboard, and driving Telegram operations workflows.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+    </marker>
+    <style>
+      .title { font: 700 18px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; }
+      .text { font: 500 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .label { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #475569; letter-spacing: 0.08em; text-transform: uppercase; }
+      .box { stroke-width: 2; }
+      .line { stroke: #0f172a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 7 7; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" rx="28" fill="url(#bg)" />
+  <text x="72" y="70" class="label">Server Subsystem Focus</text>
+  <text x="72" y="110" class="title" style="font-size: 28px;">Public Toilet Condition Monitoring System</text>
+  <text x="72" y="138" class="text">Telemetry ingest, state normalization, realtime delivery, history, and operator response.</text>
+
+  <rect x="72" y="190" width="220" height="290" rx="20" fill="#ecfeff" stroke="#0891b2" class="box" />
+  <text x="102" y="230" class="label">Restroom Sensing Layer</text>
+  <text x="102" y="270" class="title">ESP32 Node</text>
+  <text x="102" y="308" class="text">Ammonia / odor reading</text>
+  <text x="102" y="336" class="text">Wet floor detection</text>
+  <text x="102" y="364" class="text">Tissue availability</text>
+  <text x="102" y="392" class="text">Soap availability</text>
+  <text x="102" y="438" class="text">HTTPS POST /data</text>
+  <text x="102" y="466" class="text">API key attached</text>
+
+  <rect x="362" y="210" width="220" height="120" rx="20" fill="#dbeafe" stroke="#2563eb" class="box" />
+  <text x="392" y="246" class="label">Ingress</text>
+  <text x="392" y="284" class="title">Nginx Reverse Proxy</text>
+  <text x="392" y="312" class="text">TLS termination</text>
+
+  <rect x="646" y="190" width="292" height="170" rx="20" fill="#ede9fe" stroke="#7c3aed" class="box" />
+  <text x="676" y="228" class="label">Application Core</text>
+  <text x="676" y="268" class="title">Node.js / Express Server</text>
+  <text x="676" y="304" class="text">Authenticate request</text>
+  <text x="676" y="332" class="text">Validate payload shape</text>
+
+  <rect x="646" y="400" width="292" height="128" rx="20" fill="#fae8ff" stroke="#c026d3" class="box" />
+  <text x="676" y="438" class="label">State Processing</text>
+  <text x="676" y="478" class="title">Normalization + Debounce</text>
+  <text x="676" y="506" class="text">Stable, operator-friendly state</text>
+
+  <rect x="1000" y="140" width="128" height="126" rx="18" fill="#dcfce7" stroke="#16a34a" class="box" />
+  <text x="1022" y="176" class="label">Storage</text>
+  <text x="1022" y="214" class="title">Snapshot</text>
+  <text x="1022" y="242" class="text">Latest status</text>
+
+  <rect x="1000" y="306" width="128" height="126" rx="18" fill="#fef3c7" stroke="#d97706" class="box" />
+  <text x="1022" y="342" class="label">Storage</text>
+  <text x="1022" y="380" class="title">History</text>
+  <text x="1022" y="408" class="text">Audit + export</text>
+
+  <rect x="72" y="566" width="242" height="122" rx="20" fill="#e0f2fe" stroke="#0284c7" class="box" />
+  <text x="102" y="604" class="label">Realtime Delivery</text>
+  <text x="102" y="644" class="title">WebSocket Push</text>
+  <text x="102" y="672" class="text">Immediate dashboard update</text>
+
+  <rect x="384" y="566" width="242" height="122" rx="20" fill="#dcfce7" stroke="#15803d" class="box" />
+  <text x="414" y="604" class="label">Presentation</text>
+  <text x="414" y="644" class="title">Dashboard UI</text>
+  <text x="414" y="672" class="text">Latest state + history review</text>
+
+  <rect x="694" y="566" width="242" height="122" rx="20" fill="#fee2e2" stroke="#dc2626" class="box" />
+  <text x="724" y="604" class="label">Operations</text>
+  <text x="724" y="644" class="title">Telegram Workflow</text>
+  <text x="724" y="672" class="text">Alert, reminder, acknowledgement</text>
+
+  <rect x="1004" y="566" width="124" height="122" rx="20" fill="#f1f5f9" stroke="#64748b" class="box" />
+  <text x="1026" y="604" class="label">Human Loop</text>
+  <text x="1026" y="644" class="title">Staff</text>
+  <text x="1026" y="672" class="text">Respond</text>
+
+  <path d="M 292 335 C 324 335, 330 270, 362 270" class="line" />
+  <path d="M 582 270 C 614 270, 614 270, 646 270" class="line" />
+  <path d="M 792 360 L 792 400" class="line" />
+  <path d="M 938 454 C 972 454, 972 203, 1000 203" class="line" />
+  <path d="M 938 474 C 970 474, 970 369, 1000 369" class="line" />
+  <path d="M 792 528 C 792 580, 192 580, 192 566" class="line" />
+  <path d="M 314 627 L 384 627" class="line" />
+  <path d="M 938 627 L 1004 627" class="line" />
+  <path d="M 816 566 C 816 544, 816 534, 816 528" class="line dash" />
+
+  <text x="462" y="613" class="text">Live state changes</text>
+  <text x="1040" y="528" class="text">Append-only records</text>
+  <text x="1032" y="284" class="text">One row per device</text>
 </svg>
