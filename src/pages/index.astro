@@ -18,8 +18,18 @@ const personJsonLd = {
   url: siteConfig.siteUrl,
   image: `${siteConfig.siteUrl}/og.png`,
   email: `mailto:${siteConfig.email}`,
-  alumniOf: 'Bandung Institute of Technology (ITB)',
-  knowsAbout: ['Backend Systems', 'DevOps', 'IoT', 'Security', 'Product Engineering'],
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Bandung Institute of Technology (ITB)'
+  },
+  knowsAbout: [
+    'Applied AI',
+    'Backend Systems',
+    'Platform Engineering',
+    'Security',
+    'IoT',
+    'Product Engineering'
+  ],
   sameAs: [
     'https://github.com/realmfikri',
     'https://www.linkedin.com/in/muhamad-f-10166a132/',
@@ -29,33 +39,32 @@ const personJsonLd = {
 
 const skillGroups = [
   {
-    area: 'Backend',
-    items: ['API design', 'Data modeling', 'Event-driven workflows', 'Integration testing']
+    area: 'Applied AI',
+    items: ['Voice and agent workflows', 'Structured LLM evaluation', 'Human-in-the-loop review', 'Evidence-led scoring']
   },
   {
-    area: 'Systems/DevOps',
-    items: ['Linux operations', 'Nginx reverse proxy', 'VPS deployments', 'Observability basics']
+    area: 'Backend Systems',
+    items: ['API and data design', 'Deterministic state machines', 'Realtime workflows', 'Integration testing']
   },
   {
-    area: 'Security',
-    items: ['BAC/secure messaging concepts', 'Authentication flows', 'Operational hardening']
+    area: 'Platform & Operations',
+    items: ['Linux and systemd', 'Ansible automation', 'Podman and Nginx', 'Runbooks and recovery']
   },
   {
-    area: 'IoT',
-    items: ['Sensor data ingestion', 'Firmware/backend integration', 'Dashboard monitoring']
+    area: 'Security & Embedded',
+    items: ['Smartcard/eMRTD protocols', 'Authentication flows', 'IoT telemetry', 'Operational hardening']
   },
   {
     area: 'Product',
-    items: ['MVP scoping', 'Operator-first UX', 'Requirement-to-implementation handoff']
+    items: ['MVP scoping', 'Operator-first UX', 'Responsible automation', 'Requirement-to-delivery ownership']
   }
 ];
 
 const infraNotes = [
-  'Reuse older laptops as low-power Linux boxes for experiment environments and backups.',
-  'Manage servers over SSH, including service checks, logs, and deployment troubleshooting.',
-  'Run reverse proxy setups with Nginx for API/app subdomains and TLS termination.',
-  'Use tunnels and remote access tools to safely expose internal services when needed.',
-  'Document runbooks and recovery steps so ops tasks stay repeatable.'
+  'Build repeatable RHEL-like environments with Ansible, Podman, systemd, firewalld, and SELinux-aware operations.',
+  'Operate small Linux servers over SSH with health checks, smoke tests, logs, backups, and recovery procedures.',
+  'Deploy APIs and web apps behind Nginx with minimal public exposure and clear service boundaries.',
+  'Turn operational knowledge into runbooks, maintenance procedures, incident steps, and reports.'
 ];
 ---
 
@@ -65,29 +74,51 @@ const infraNotes = [
   description={siteConfig.description}
   jsonLd={personJsonLd}
 >
-  <section class="card overflow-hidden p-8 sm:p-10">
-    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-cyan-700 dark:text-cyan-300">Portfolio</p>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-      Muhamad Fikri — Electrical Engineering (ITB) | Backend / Systems / IoT / Security
-    </h1>
-    <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300">
-      Systems-minded engineer who enjoys backend architecture, infrastructure, security-focused engineering, and IoT
-      products. Long-term, I want to build in energy and data-center adjacent domains where software and physical
-      systems meet.
-    </p>
+  <section class="card hero-card overflow-hidden p-8 sm:p-10">
+    <div class="grid gap-10 lg:grid-cols-[1.6fr_0.9fr] lg:items-end">
+      <div>
+        <div class="flex flex-wrap items-center gap-3 text-sm font-semibold">
+          <span class="rounded-full bg-cyan-100 px-3 py-1 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-200">
+            Electrical Engineering · ITB
+          </span>
+          <span class="text-slate-600 dark:text-slate-300">Indonesia</span>
+        </div>
 
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="/projects" class="button-primary">View Projects</a>
-      <a href="/Muhamad_Fikri_CV.pdf" class="button-secondary">Download CV</a>
-      <a href="/contact" class="button-secondary">Contact</a>
+        <h1 class="mt-5 max-w-4xl text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl">
+          I build AI-enabled systems that hold up outside the demo.
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+          I’m Muhamad Fikri, an engineering student working across applied AI, backend architecture, platform operations,
+          security, and connected products. I like turning ambiguous problems into systems that are explainable,
+          testable, and useful to the people operating them.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/projects" class="button-primary">Explore My Work</a>
+          <a href="/about" class="button-secondary">About Me</a>
+          <a href="/contact" class="button-secondary">Let’s Talk</a>
+        </div>
+      </div>
+
+      <aside class="rounded-2xl border border-cyan-200 bg-cyan-50/80 p-6 dark:border-cyan-800 dark:bg-cyan-950/50">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-800 dark:text-cyan-200">Latest build · Jun 2026</p>
+        <h2 class="mt-3 text-2xl font-bold text-slate-900 dark:text-white">AIN Hire</h2>
+        <p class="mt-3 leading-7 text-slate-700 dark:text-slate-300">
+          A Bahasa Indonesia voice-screening prototype with bounded interviews, evidence-backed scoring, and required
+          recruiter sign-off.
+        </p>
+        <a href="/projects/ain-hire" class="mt-5 inline-flex font-semibold text-cyan-800 underline underline-offset-4 dark:text-cyan-200">
+          Read the case study →
+        </a>
+      </aside>
     </div>
   </section>
 
   <section class="mt-16">
     <SectionHeading
       eyebrow="Selected Work"
-      title="Featured Projects"
-      description="Focused case studies covering backend systems, security, IoT operations, and product engineering."
+      title="Recent, Relevant Work"
+      description="Case studies spanning applied AI, backend systems, platform operations, smartcard security, and IoT products."
     />
 
     <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -100,8 +131,8 @@ const infraNotes = [
   <section class="mt-16">
     <SectionHeading
       eyebrow="Capabilities"
-      title="Skills Snapshot"
-      description="Core areas I actively use in projects, from protocol-level security to deployment workflows."
+      title="How I Build"
+      description="A systems mindset from model behavior and data contracts through deployment and day-to-day operations."
     />
 
     <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -122,8 +153,8 @@ const infraNotes = [
     <article class="card p-6">
       <SectionHeading
         eyebrow="Infra"
-        title="Infra & Homelab"
-        description="Hands-on operations practice from personal environments that later informs production decisions."
+        title="Infrastructure Is Part of the Product"
+        description="Hands-on operations work that keeps implementation grounded in how systems are deployed, observed, and recovered."
       />
       <ul class="list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
         {infraNotes.map((note) => (
@@ -135,13 +166,13 @@ const infraNotes = [
     <aside class="card p-6">
       <SectionHeading
         eyebrow="Now"
-        title="What I’m Working On"
-        description="Current focus areas."
+        title="Current Direction"
+        description="Where my work is moving in 2026."
       />
       <ul class="space-y-2 text-slate-700 dark:text-slate-300">
-        <li><Badge label="Backend Reliability" tone="accent" /> improving deploy and runbook quality.</li>
-        <li><Badge label="Security" tone="accent" /> deeper smartcard/eMRTD protocol implementation work.</li>
-        <li><Badge label="IoT" tone="accent" /> refining telemetry and alerting pipelines.</li>
+        <li><Badge label="Applied AI" tone="accent" /> bounded agent workflows, evaluation, and human review.</li>
+        <li><Badge label="Platform" tone="accent" /> repeatable deployments, service operations, and runbooks.</li>
+        <li><Badge label="Security" tone="accent" /> smartcard/eMRTD protocol implementation and testing.</li>
       </ul>
     </aside>
   </section>

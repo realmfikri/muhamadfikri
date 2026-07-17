@@ -1,6 +1,6 @@
 # muhamadfikri.com
 
-Recruiter-friendly portfolio site for **Muhamad Fikri** built with **Astro + TypeScript + Tailwind** and generated as a static site.
+Portfolio site for **Muhamad Fikri** covering applied AI, backend systems, infrastructure, security, and connected products. Built with **Astro + TypeScript + Tailwind** and generated as a static site.
 
 ## Stack
 
@@ -25,7 +25,6 @@ pnpm preview
 .
 ├── public/
 │   ├── CNAME
-│   ├── Muhamad_Fikri_CV.pdf
 │   ├── og.png
 │   └── diagrams/
 ├── src/

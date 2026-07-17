@@ -10,7 +10,10 @@ const personJsonLd = {
   name: 'Muhamad Fikri',
   url: siteConfig.siteUrl,
   email: `mailto:${siteConfig.email}`,
-  alumniOf: 'Bandung Institute of Technology (ITB)',
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Bandung Institute of Technology (ITB)'
+  },
   sameAs: [
     'https://github.com/realmfikri',
     'https://www.linkedin.com/in/muhamad-f-10166a132/',
@@ -20,22 +23,28 @@ const personJsonLd = {
 
 const timelineItems = [
   {
-    period: 'Current',
-    title: 'Backend, Infrastructure, and Security Projects',
+    period: 'June 2026',
+    title: 'Applied AI with AIN Hire',
     description:
-      'Building and iterating on systems projects that combine API design, deployment operations, and protocol-level security concepts.'
+      'Built a mobile-first voice-screening prototype with deterministic interview control, separate AI scoring, evidence trails, and required human sign-off.'
+  },
+  {
+    period: 'February 2026',
+    title: 'Security and Platform Operations',
+    description:
+      'Extended eMRTD smartcard work and built a RHEL-style operations lab around Ansible, Podman, systemd, firewalld, and repeatable runbooks.'
+  },
+  {
+    period: '2025',
+    title: 'Backend Systems for Real Operators',
+    description:
+      'Shipped projects across IoT monitoring, retail operations, search, and collaborative systems with an emphasis on useful workflows and maintainable architecture.'
   },
   {
     period: 'ITB',
-    title: 'Electrical Engineering Background',
+    title: 'Electrical Engineering Foundation',
     description:
-      'Studying in an environment that spans software, embedded thinking, and systems analysis, which shapes a practical engineering mindset.'
-  },
-  {
-    period: 'Ongoing',
-    title: 'IoT and Product Execution',
-    description:
-      'Working on sensor-to-dashboard pipelines, operations runbooks, and tools intended for real-world users with constrained environments.'
+      'Studying software, embedded systems, and systems analysis in a setting that keeps my engineering approach close to physical constraints and real-world impact.'
   }
 ];
 ---
@@ -43,35 +52,37 @@ const timelineItems = [
 <BaseLayout
   path="/about"
   title="About"
-  description="About Muhamad Fikri, an ITB electrical engineering student focused on backend systems, infra, IoT, and security." 
+  description="About Muhamad Fikri, an ITB electrical engineering student building applied AI products, backend systems, infrastructure, security tools, and IoT systems."
   jsonLd={personJsonLd}
 >
   <section class="card p-8 sm:p-10">
     <SectionHeading
       eyebrow="About"
-      title="Systems Thinking, Product Delivery"
-      description="I enjoy building software where architecture and operations matter as much as user-facing features."
+      title="I Like the Whole System"
+      description="Model behavior, data contracts, deployment, and the human workflow all shape whether a product actually works."
     />
 
     <div class="prose-content max-w-4xl">
       <p>
-        I am Muhamad Fikri, an Electrical Engineering student at ITB with a strong interest in backend systems, infrastructure,
-        and security engineering. I tend to work from first principles: understand the constraints, model the system clearly,
-        then ship something that can be operated and improved.
+        I am Muhamad Fikri, an Electrical Engineering student at ITB building at the intersection of applied AI, backend
+        systems, infrastructure, and security. I tend to work from first principles: understand the constraints, model the
+        system clearly, then ship something that can be operated and improved.
       </p>
       <p>
-        A recurring theme in my projects is bridging software and real-world systems. That includes smartcard and eMRTD security
-        workflows, IoT monitoring pipelines, and practical deployment concerns like reverse proxy configuration, health checks,
-        and runbooks. I prefer tools and architectures that are understandable, testable, and maintainable.
+        My recent work adds AI product engineering to that foundation. In AIN Hire, I treated the model as one component in a
+        controlled workflow: the interview is bounded by a deterministic state machine, scoring is separated from conversation,
+        evidence is retained for review, and a recruiter remains responsible for the final decision. That is the kind of AI system
+        I find compelling—useful, inspectable, and designed around human accountability.
       </p>
       <p>
-        I am also interested in building products with clear operator value. For me, this means prioritizing reliability,
-        observable behavior, and UX that works for non-technical users. Long-term, I am especially interested in
-        energy-related and data-center adjacent work where systems engineering has direct physical impact.
+        A recurring theme in my other projects is bridging software and real-world systems: eMRTD and smartcard security,
+        sensor-to-dashboard IoT pipelines, and practical platform work with Linux, Ansible, Podman, Nginx, health checks, and
+        runbooks. I prefer architectures that are understandable, testable, and maintainable after the demo ends.
       </p>
       <p>
-        Outside pure implementation, I enjoy turning rough ideas into structured scopes: clear requirements, realistic milestones,
-        and measurable tradeoffs. That product-meets-engineering overlap is where I do my best work.
+        I also enjoy turning rough ideas into structured scopes: clear requirements, realistic milestones, measurable tradeoffs,
+        and interfaces that work for non-technical users. Long-term, I am especially interested in energy and data-center adjacent
+        work where software, infrastructure, and physical systems have direct impact.
       </p>
     </div>
   </section>
@@ -79,8 +90,8 @@ const timelineItems = [
   <section class="mt-14">
     <SectionHeading
       eyebrow="Timeline"
-      title="Focus Areas"
-      description="A concise view of where my recent work and interests are concentrated."
+      title="Recent Direction"
+      description="How the work has expanded from backend and connected systems into applied AI and platform operations."
     />
     <div class="card p-6">
       <TimelineList items={timelineItems} />

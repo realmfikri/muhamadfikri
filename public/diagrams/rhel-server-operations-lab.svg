@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title description">
+  <title id="title">RHEL server operations lab architecture</title>
+  <desc id="description">An Ansible control node configures a Rocky or AlmaLinux virtual machine running Nginx, a Flask API, and PostgreSQL as Podman services managed by systemd.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#0e7490" />
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="960" height="520" rx="24" fill="#f8fafc" />
+  <text x="64" y="62" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#0e7490">REPEATABLE OPERATIONS</text>
+  <text x="64" y="96" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0f172a">One lightweight VM, a complete operating model</text>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="176" width="190" height="166" rx="18" fill="#ffffff" stroke="#cbd5e1" />
+    <text x="159" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Control Node</text>
+    <text x="159" y="249" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475569">Ubuntu host</text>
+    <rect x="94" y="273" width="130" height="36" rx="18" fill="#ecfeff" stroke="#67e8f9" />
+    <text x="159" y="296" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#155e75">Ansible + SSH</text>
+  </g>
+
+  <path d="M254 259H322" stroke="#0e7490" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="288" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#475569">configure</text>
+
+  <g filter="url(#shadow)">
+    <rect x="334" y="130" width="562" height="296" rx="22" fill="#f1f5f9" stroke="#94a3b8" />
+    <text x="366" y="169" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#0f172a">Rocky / AlmaLinux 9 VM</text>
+    <text x="366" y="194" font-family="Arial, sans-serif" font-size="13" fill="#475569">systemd · firewalld · SELinux-aware operations</text>
+
+    <rect x="374" y="230" width="138" height="106" rx="16" fill="#cffafe" stroke="#22d3ee" />
+    <text x="443" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#164e63">Nginx</text>
+    <text x="443" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#155e75">Public entry</text>
+
+    <rect x="546" y="230" width="138" height="106" rx="16" fill="#dcfce7" stroke="#4ade80" />
+    <text x="615" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#14532d">Flask API</text>
+    <text x="615" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#166534">Health endpoints</text>
+
+    <rect x="718" y="230" width="138" height="106" rx="16" fill="#fef3c7" stroke="#fbbf24" />
+    <text x="787" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#78350f">PostgreSQL</text>
+    <text x="787" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#92400e">Internal only</text>
+
+    <path d="M512 283H534" stroke="#0e7490" stroke-width="3" marker-end="url(#arrow)" />
+    <path d="M684 283H706" stroke="#0e7490" stroke-width="3" marker-end="url(#arrow)" />
+
+    <rect x="374" y="365" width="482" height="34" rx="17" fill="#0f172a" />
+    <text x="615" y="387" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#e2e8f0">Podman containers managed as systemd services</text>
+  </g>
+
+  <rect x="64" y="390" width="190" height="68" rx="16" fill="#fff7ed" stroke="#fdba74" />
+  <text x="159" y="417" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c2d12">OPERATIONS OUTPUT</text>
+  <text x="159" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#9a3412">Checks · Runbooks · Reports</text>
+</svg>

@@ -1,9 +1,8 @@
 export const siteConfig = {
   name: 'Muhamad Fikri',
-  title:
-    'Muhamad Fikri — Electrical Engineering (ITB) | Backend / Systems / IoT / Security',
+  title: 'Muhamad Fikri — Applied AI, Backend & Systems Engineer',
   description:
-    'Systems-minded engineer focusing on backend, infrastructure, security, and IoT with long-term interest in energy and data-center adjacent work.',
+    'Electrical Engineering student at ITB building applied AI products, backend systems, infrastructure, security tools, and connected products.',
   siteUrl: 'https://muhamadfikri.com',
   email: 'fikri23134@gmail.com'
 };

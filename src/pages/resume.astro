@@ -4,28 +4,28 @@ import SectionHeading from '../components/SectionHeading.astro';
 
 const skillAreas = [
   {
-    label: 'Backend',
-    items: ['TypeScript/Node.js services', 'Go-focused systems concepts', 'Data modeling and API contracts']
+    label: 'Applied AI',
+    items: ['Voice interview workflows', 'Gemini/Vertex AI integration', 'Structured scoring and evidence', 'Human-in-the-loop review']
   },
   {
-    label: 'Systems & DevOps',
-    items: ['Linux operations', 'Nginx reverse proxy', 'VPS deployment workflows', 'Runbooks and health checks']
+    label: 'Backend & Data',
+    items: ['Python and TypeScript services', 'API and data contracts', 'State machines and realtime workflows', 'PostgreSQL and BigQuery patterns']
   },
   {
-    label: 'Security',
-    items: ['eMRTD/BAC flows', 'Secure messaging concepts', 'Protocol-aware testing and verification']
+    label: 'Platform & Operations',
+    items: ['Linux, systemd, and Nginx', 'Ansible and Podman', 'VPS and Cloud Run workflows', 'Health checks, runbooks, and recovery']
   },
   {
-    label: 'IoT & Product',
-    items: ['Sensor data ingestion', 'Dashboard integration', 'Operator-first UX and rollout planning']
+    label: 'Security & Connected Systems',
+    items: ['eMRTD/BAC and secure messaging', 'Java Card workflows', 'IoT telemetry pipelines', 'Deployment hardening']
   }
 ];
 
 const selectedAchievements = [
-  'Built a Java-based ePassport emulator covering ICAO 9303 core data-group personalization and host-side verification tooling.',
-  'Designed a full-text search engine architecture using BM25 + inverted indexes with library and HTTP service interfaces.',
-  'Shipped and documented end-to-end IoT monitoring infrastructure including backend services, dashboards, and operational runbooks.',
-  'Defined a POS/inventory system approach for a real retail context with photo-first inventory and stock-ledger discipline.'
+  'Built AIN Hire, a Bahasa Indonesia voice-screening prototype with bounded interviews, separate scoring, audit evidence, and human sign-off.',
+  'Built and tested a Java-based ePassport emulator covering ICAO 9303 personalization, BAC/secure messaging, passive authentication, and physical-card workflows.',
+  'Created a repeatable RHEL-style operations lab using Ansible, Podman, systemd, firewalld, SELinux-aware troubleshooting, and operational reporting.',
+  'Shipped an IoT monitoring backend that turns sensor telemetry into real-time dashboards, history, alerts, acknowledgements, and operator workflows.'
 ];
 ---
 
@@ -37,24 +37,25 @@ const selectedAchievements = [
   <section class="card p-8 sm:p-10">
     <SectionHeading
       eyebrow="Resume"
-      title="Profile Summary"
-      description="Backend and systems-focused engineer with practical experience across security, IoT, and product delivery."
+      title="Current Profile"
+      description="An online, up-to-date summary of the engineering work represented across this site."
     />
 
     <p class="max-w-4xl text-lg leading-8 text-slate-700 dark:text-slate-300">
-      I work across backend engineering, infrastructure, and security-heavy projects with a focus on clear architecture,
-      maintainable implementation, and operational readiness. My work often combines software design with systems concerns,
-      including deployment reliability, protocol correctness, and measurable quality practices.
+      I build applied AI products and backend systems with the infrastructure, security, and human workflows around them in
+      view. My work spans voice agents, structured evaluation, APIs, data systems, Linux operations, smartcards, and IoT. Across
+      those domains, I focus on clear architecture, maintainable implementation, observable behavior, and operational readiness.
     </p>
 
-    <div class="mt-8">
-      <a href="/Muhamad_Fikri_CV.pdf" class="button-primary text-base">Download CV (PDF)</a>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/projects" class="button-primary text-base">View Project Evidence</a>
+      <a href="/contact" class="button-secondary text-base">Contact Me</a>
     </div>
   </section>
 
   <section class="mt-14 grid gap-6 lg:grid-cols-2">
     <article class="card p-6">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Key Skills</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Core Capabilities</h2>
       <div class="mt-4 space-y-4">
         {skillAreas.map((area) => (
           <section>
@@ -70,7 +71,7 @@ const selectedAchievements = [
     </article>
 
     <article class="card p-6">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Selected Achievements</h2>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Selected Evidence</h2>
       <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
         {selectedAchievements.map((item) => (
           <li>{item}</li>

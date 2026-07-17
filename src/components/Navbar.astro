@@ -9,36 +9,56 @@ const { currentPath } = Astro.props;
 ---
 
 <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/85 backdrop-blur dark:border-slate-800 dark:bg-slate-950/85">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+  <div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
     <a href="/" class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
       muhamadfikri<span class="text-cyan-600">.com</span>
     </a>
 
-    <nav aria-label="Primary" class="flex items-center gap-2 sm:gap-3">
-      <ul class="flex flex-wrap items-center gap-2 sm:gap-3">
-        {navigation.map((item) => {
-          const isActive =
-            item.href === '/'
-              ? currentPath === '/'
-              : currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button
+        type="button"
+        data-nav-toggle
+        class="rounded-md border border-slate-300 p-2 text-slate-700 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 sm:hidden"
+        aria-label="Toggle navigation"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
 
-          return (
-            <li>
-              <a
-                href={item.href}
-                aria-current={isActive ? 'page' : undefined}
-                class={`rounded-md px-3 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 ${
-                  isActive
-                    ? 'bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950'
-                    : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
-                }`}
-              >
-                {item.label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <nav
+        id="primary-navigation"
+        aria-label="Primary"
+        data-nav-menu
+        class="absolute left-4 right-4 top-[calc(100%+0.5rem)] hidden rounded-xl border border-slate-200 bg-white p-3 shadow-xl dark:border-slate-700 dark:bg-slate-900 sm:static sm:block sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:dark:bg-transparent"
+      >
+        <ul class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2 lg:gap-3">
+          {navigation.map((item) => {
+            const isActive =
+              item.href === '/'
+                ? currentPath === '/'
+                : currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  class={`block rounded-md px-3 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 ${
+                    isActive
+                      ? 'bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950'
+                      : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
       <button
         type="button"
@@ -73,6 +93,30 @@ const { currentPath } = Astro.props;
           <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
         </svg>
       </button>
-    </nav>
+    </div>
   </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const menu = document.querySelector('[data-nav-menu]');
+
+    if (!toggle || !menu) {
+      return;
+    }
+
+    const setOpen = (isOpen) => {
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menu.classList.toggle('hidden', !isOpen);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  })();
+</script>
